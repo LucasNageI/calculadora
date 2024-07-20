@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <main id="main">
+        <section id="hero-section">
+
+            <form class="formulario" id="formulario">
+
+                <div class="h1-container">
+                    <h1 class="title">Calculadora</h1>
+                </div>
+
+                <div class="span-container">   
+                    <span class="operacion" id="operacion">Ingrese su operacion</span>
+                </div>
+
+                <div class="btns-container">
+                    <div class="filas primera-fila">
+                        
+                        <input type="button" value="1" class="inputs-btn" id="uno">
+                        <input type="button" value="2" class="inputs-btn" id="dos">
+                        <input type="button" value="3" class="inputs-btn" id="tres">
+                        <input type="button" value="+" class="inputs-btn" id="suma">
+                    </div>
+                    
+                    <div class="filas segunda-fila">
+                        <input type="button" value="4" class="inputs-btn" id="cuatro">
+                        <input type="button" value="5" class="inputs-btn" id="cinco">
+                        <input type="button" value="6" class="inputs-btn" id="seis">
+                        <input type="button" value="-" class="inputs-btn" id="resta">
+                    </div>
+
+                    <div class="filas tercera-fila">
+                        <input type="button" value="7" class="inputs-btn" id="siete">
+                        <input type="button" value="8" class="inputs-btn" id="ocho">
+                        <input type="button" value="9" class="inputs-btn" id="nueve">
+                        <input type="button" value="x" class="inputs-btn" id="multiplicacion">
+                    </div>
+
+                    <div class="filas cuarta-fila">
+                        <input type="button" value="0" class="inputs-btn" id="cero">
+                        <input type="button" value="/" class="inputs-btn" id="division">
+                        <input type="submit" value="=" class="inputs-btn submit-btn" id="igual">
+                    </div>
+                    <div class="filas quinta-fila">
+                        <input type="button" value="." class="inputs-btn" id="punto">
+                        <input type="button" value="RST" class="inputs-btn reset" id="RST">
+                        <input type="button" value="DEL" class="inputs-btn del" id="DEL">
+                    </div>
+                </div>
+
+                <div class="span-container">   
+                    <span class="resultado" id="resultado"></span>
+                </div>
+                
+            </form>
+
+        </section>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>
