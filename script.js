@@ -99,7 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            resultado_operacion = resultado
+            if (ACCIONES.NAN.accion(resultado)) {
+                resultado_operacion = "error"
+            } else {
+                resultado_operacion = resultado
+            }
         } 
         
         else {
