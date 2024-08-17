@@ -17,7 +17,6 @@ const ACCIONES = {
     },
     RESET: {
         accion: () => {
-            string_num.replaceAll(string_num, "") 
             string_num = ""
         }
     },
@@ -87,38 +86,32 @@ const handleSubmit = (event) => {
         resultado_operacion = ACCIONES.SUMAR.accion(parseFloat(operacion_ingresada[0]), parseFloat(operacion_ingresada[2]))
         if(ACCIONES.NAN.accion(resultado_operacion)){
             resultado_operacion = "error"
-            resultado.innerText = resultado_operacion
         }
-        resultado.innerText = resultado_operacion
     }
     else if(operacion_ingresada[1] === "-"){
         resultado_operacion = ACCIONES.RESTAR.accion(parseFloat(operacion_ingresada[0]), parseFloat(operacion_ingresada[2]))
         if(ACCIONES.NAN.accion(resultado_operacion)){
             resultado_operacion = "error"
-            resultado.innerText = resultado_operacion
         }
-        resultado.innerText = resultado_operacion
     }
     else if(operacion_ingresada[1] === "x"){
         resultado_operacion = ACCIONES.MULTIPLICAR.accion(parseFloat(operacion_ingresada[0]), parseFloat(operacion_ingresada[2]))
         if(ACCIONES.NAN.accion(resultado_operacion)){
             resultado_operacion = "error"
-            resultado.innerText = resultado_operacion
         }
-        resultado.innerText = resultado_operacion
     }
     else if(operacion_ingresada[1] === "/"){
         resultado_operacion = ACCIONES.DIVIDIR.accion(parseFloat(operacion_ingresada[0]), parseFloat(operacion_ingresada[2]))
         if(ACCIONES.NAN.accion(resultado_operacion)){
             resultado_operacion = "error"
-            resultado.innerText = resultado_operacion
         }
-        resultado.innerText = resultado_operacion
     }
     else{
         resultado_operacion = "error"
-        resultado.innerText = resultado_operacion
     }
+
+    operacion.innerText = string_num
+    resultado.innerText = resultado_operacion
 
     string_num = ""
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -12,47 +13,44 @@
 
             <form class="formulario" id="formulario">
 
-                <div class="h1-container">
-                    <h1 class="title">Calculadora</h1>
-                </div>
-
                 <div class="span-container">   
-                    <span class="operacion" id="operacion">Ingrese su operacion</span>
+                        <span class="operacion" id="operacion">Ingrese su operacion</span>
                 </div>
 
                 <div class="btns-container">
                     <div class="filas primera-fila">
                         
-                        <input type="button" value="1" class="inputs-btn" id="uno">
-                        <input type="button" value="2" class="inputs-btn" id="dos">
-                        <input type="button" value="3" class="inputs-btn" id="tres">
-                        <input type="button" value="+" class="inputs-btn" id="suma">
+                        <button type="button" value="1" class="inputs-btn" id="uno">1</button>
+                        <button type="button" value="2" class="inputs-btn" id="dos">2</button>
+                        <button type="button" value="3" class="inputs-btn" id="tres">3</button>
+                        <button type="button" value="x" class="inputs-btn multiplicacion" id="multiplicacion">x</button>
                     </div>
                     
                     <div class="filas segunda-fila">
-                        <input type="button" value="4" class="inputs-btn" id="cuatro">
-                        <input type="button" value="5" class="inputs-btn" id="cinco">
-                        <input type="button" value="6" class="inputs-btn" id="seis">
-                        <input type="button" value="-" class="inputs-btn" id="resta">
+                        <button type="button" value="4" class="inputs-btn" id="cuatro">4</button>
+                        <button type="button" value="5" class="inputs-btn" id="cinco">5</button>
+                        <button type="button" value="6" class="inputs-btn" id="seis">6</button>
+                        <button type="button" value="-" class="inputs-btn resta" id="resta">-</button>
                     </div>
 
                     <div class="filas tercera-fila">
-                        <input type="button" value="7" class="inputs-btn" id="siete">
-                        <input type="button" value="8" class="inputs-btn" id="ocho">
-                        <input type="button" value="9" class="inputs-btn" id="nueve">
-                        <input type="button" value="x" class="inputs-btn" id="multiplicacion">
+                        <button type="button" value="7" class="inputs-btn" id="siete">7</button>
+                        <button type="button" value="8" class="inputs-btn" id="ocho">8</button>
+                        <button type="button" value="9" class="inputs-btn" id="nueve">9</button>
+                        <button type="button" value="/" class="inputs-btn division" id="division">/</button>
                     </div>
 
                     <div class="filas cuarta-fila">
-                        <input type="button" value="0" class="inputs-btn" id="cero">
-                        <input type="button" value="/" class="inputs-btn" id="division">
-                        <input type="submit" value="=" class="inputs-btn submit-btn" id="igual">
+                        <button type="button" value="0" class="inputs-btn" id="cero">0</button>
+                        <button type="button" value="." class="inputs-btn" id="punto">.</button>
+                        <button type="button" value="+" class="inputs-btn suma" id="suma">+</button>
                     </div>
                     <div class="filas quinta-fila">
-                        <input type="button" value="." class="inputs-btn" id="punto">
-                        <input type="button" value="RST" class="inputs-btn reset" id="RST">
-                        <input type="button" value="DEL" class="inputs-btn del" id="DEL">
+                        <button type="button" value="RST" class="inputs-btn reset" id="RESET"><i class="bi bi-backspace"></i></button>
+                        <button type="button" value="DEL" class="inputs-btn del" id="CLEAR">C</button>
+                        <button type="button" value="=" class="inputs-btn submit-btn" id="igual">=</button>
                     </div>
+                    
                 </div>
 
                 <div class="span-container">   
