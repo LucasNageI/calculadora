@@ -81,7 +81,7 @@ input:focus {
     transition: 0.3s;
 }
 
-.suma, .resta, .multiplicacion, .division {
+.suma, .resta, .multiplicacion, .division, .del {
     background: rgb(255,178,158);
     background: linear-gradient(45deg, rgba(255,178,158,1) 0%, rgba(255,155,131,1) 31%, rgba(255,102,62,1) 100%);
 }
@@ -98,14 +98,8 @@ input:focus {
     background: linear-gradient(45deg, rgba(242,122,170,1) 0%, rgba(251,49,142,1) 100%);
 }
 
-.reset {
-    width: 60px;
-    height: 60px;
-    border-radius: 20px;
-}
-
 .del {
-    width: 60px;
+    width: 122px;
     height: 60px;
     border-radius: 20px;
 }

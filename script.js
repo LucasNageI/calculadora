@@ -1,120 +1,116 @@
-const formulario = document.getElementById("formulario")
+document.addEventListener("DOMContentLoaded", () => {
+    const formulario = document.getElementById("formulario")
+    const operacion = document.getElementById("operacion")
+    const resultado = document.getElementById("resultado")
 
-let string_num = ""
+    let string_num = ""
 
-const ACCIONES = {
-    SUMAR: {
-        accion: (a, b) => a + b
-    },
-    RESTAR: {
-        accion: (a, b) => a - b
-    },
-    MULTIPLICAR: {
-        accion: (a, b) => a * b
-    },
-    DIVIDIR: {
-        accion: (a, b) => a / b
-    },
-    RESET: {
-        accion: () => {
-            string_num = ""
-        }
-    },
-    DEL: {
-        accion: () => {
-            if(string_num.endsWith(" ")){
-                let string_modificado = string_num.slice(0, -3)
-                string_num = string_modificado
+    const ACCIONES = {
+        SUMAR: {
+            accion: (a, b) => a + b
+        },
+        RESTAR: {
+            accion: (a, b) => a - b
+        },
+        MULTIPLICAR: {
+            accion: (a, b) => a * b
+        },
+        DIVIDIR: {
+            accion: (a, b) => a / b
+        },
+        C: {
+            accion: () => {
+                if (string_num.endsWith(" ")) {
+                    string_num = string_num.slice(0, -3)
+                } else {
+                    string_num = string_num.slice(0, -1)
+                }
+                operacion.innerText = string_num
             }
-            else{
-                let string_modificado = string_num.slice(0, -1)
-                string_num = string_modificado
-            }
-
+        },
+        NAN: {
+            accion: (numero) => isNaN(numero)
         }
-    },
-    NAN: {
-        accion: (numero) => isNaN(numero)
     }
-}
 
-let numero = ""
-let resultado_operacion = ""
-let operacion_ingresada = []
+    const handleCalculadora = (event) => {
+        const numero = event.target.value
 
-const handleCalculardora = (event) => {
+        if (numero >= "0" && numero <= "9") {
+            string_num += numero
+            operacion.innerText = string_num
+        } 
 
-    numero = event.target.value
+        else if (numero === "C") {
+            ACCIONES.C.accion()
+        } 
+        else if (["+", "-", "x", "/"].includes(numero)) {
+            if (string_num.endsWith(" ")) {
+                string_num = string_num.slice(0, -3)
+            }
+            string_num += " " + numero + " "
+            operacion.innerText = string_num
+        } 
 
-    if((numero === "1"||numero === "2"||numero === "3"||numero === "4"||numero === "5"||numero === "6"||numero === "7"||numero === "8" ||numero === "9"||numero === "0")){
-        string_num = string_num + numero
+        else if (numero === ".") {
+            if (!string_num.endsWith(" ")) {
+                string_num += "."
+                operacion.innerText = string_num
+            }
+        } 
+
+        else if (numero === "=") {
+            handleSubmit()
+        }
+    }
+
+    const handleSubmit = () => {
+        const operacion_ingresada = string_num.split(" ")
+        let resultado_operacion = ""
+
+        if (operacion_ingresada.length >= 3) {
+            let resultado = parseFloat(operacion_ingresada[0])
+
+            for (let i = 1; i < operacion_ingresada.length - 1; i += 2) {
+                const op = operacion_ingresada[i]
+                const num = parseFloat(operacion_ingresada[i + 1])
+
+                if (ACCIONES.NAN.accion(resultado) || ACCIONES.NAN.accion(num)) {
+                    resultado_operacion = "error"
+                    break
+                }
+
+                switch (op) {
+                    case "+":
+                        resultado += num
+                        break
+                    case "-":
+                        resultado -= num
+                        break
+                    case "x":
+                        resultado *= num
+                        break
+                    case "/":
+                        resultado /= num
+                        break
+                    default:
+                        resultado_operacion = "error"
+                        break
+                }
+            }
+
+            resultado_operacion = resultado
+        } 
+        
+        else {
+            resultado_operacion = "error"
+        }
+
         operacion.innerText = string_num
+        resultado.innerText = resultado_operacion
+
+        string_num = ""
     }
 
-    else if(numero === undefined || numero === "=" || numero === "RST" || numero === "DEL"){
-        string_num = string_num + ""
-        if(numero === "DEL"){
-            ACCIONES.DEL.accion()
-            operacion.innerText = string_num
-        }
-        else if(numero === "RST"){
-            ACCIONES.RESET.accion()
-            operacion.innerText = string_num
-        }
-    }
-
-    else{
-        if(string_num.includes(" + ") || string_num.includes(" - ") || string_num.includes(" x ") || string_num.includes(" / ") || string_num === ""){
-            string_num = string_num + ""
-            operacion.innerText = string_num
-        }
-        else if(numero === "."){
-            string_num = string_num + "."
-            operacion.innerText = string_num
-        }
-        else{
-            string_num = string_num + " " + numero + " "
-            operacion.innerText = string_num
-        }
-    }
-}
-
-const handleSubmit = (event) => {
-    event.preventDefault()
-    operacion_ingresada = string_num.split(" ")
-    if(operacion_ingresada[1] === "+"){
-        resultado_operacion = ACCIONES.SUMAR.accion(parseFloat(operacion_ingresada[0]), parseFloat(operacion_ingresada[2]))
-        if(ACCIONES.NAN.accion(resultado_operacion)){
-            resultado_operacion = "error"
-        }
-    }
-    else if(operacion_ingresada[1] === "-"){
-        resultado_operacion = ACCIONES.RESTAR.accion(parseFloat(operacion_ingresada[0]), parseFloat(operacion_ingresada[2]))
-        if(ACCIONES.NAN.accion(resultado_operacion)){
-            resultado_operacion = "error"
-        }
-    }
-    else if(operacion_ingresada[1] === "x"){
-        resultado_operacion = ACCIONES.MULTIPLICAR.accion(parseFloat(operacion_ingresada[0]), parseFloat(operacion_ingresada[2]))
-        if(ACCIONES.NAN.accion(resultado_operacion)){
-            resultado_operacion = "error"
-        }
-    }
-    else if(operacion_ingresada[1] === "/"){
-        resultado_operacion = ACCIONES.DIVIDIR.accion(parseFloat(operacion_ingresada[0]), parseFloat(operacion_ingresada[2]))
-        if(ACCIONES.NAN.accion(resultado_operacion)){
-            resultado_operacion = "error"
-        }
-    }
-    else{
-        resultado_operacion = "error"
-    }
-
-    operacion.innerText = string_num
-    resultado.innerText = resultado_operacion
-
-    string_num = ""
-}
-
-formulario.addEventListener("submit", handleSubmit)
-formulario.addEventListener("click", handleCalculardora)
+    formulario.addEventListener("click", handleCalculadora)
+})
